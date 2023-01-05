@@ -1,0 +1,65 @@
+﻿@page
+@model Proiect_Medii.Pages.Users.IndexModel
+
+@{
+    ViewData["Title"] = "Users";
+}
+
+<h1>Users</h1>
+
+<p>
+    <a class="btn btn-outline-primary float-right" asp-page="Create">Create New</a>
+</p>
+<div class="row">
+    <div class="col-md-10 offset-md-2">
+
+        <table class="table">
+            <thead>
+                <tr class="text-center">
+                    <th>
+                        @Html.DisplayNameFor(model => model.User[0].FirstName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.User[0].LastName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.User[0].Adress)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.User[0].Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.User[0].Phone)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.User)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Adress)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Phone)
+                        </td>
+                        <td class="align-middle">
+                            <a class="btn btn-outline-primary" asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                            <a class="btn btn-outline-info" asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                            <a class="btn btn-danger text-white" asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

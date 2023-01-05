@@ -1,0 +1,75 @@
+﻿@page
+@model Proiect_Medii.Pages.Festivals.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Festival</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Festival.Id" />
+            <div class="form-group">
+                <label asp-for="Festival.Name" class="control-label"></label>
+                <input asp-for="Festival.Name" class="form-control" />
+                <span asp-validation-for="Festival.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Festival.Description" class="control-label"></label>
+                <input asp-for="Festival.Description" class="form-control" />
+                <span asp-validation-for="Festival.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Festival.Price" class="control-label"></label>
+                <input asp-for="Festival.Price" class="form-control" />
+                <span asp-validation-for="Festival.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Festival.ImageURL" class="control-label"></label>
+                <input asp-for="Festival.ImageURL" class="form-control" />
+                <span asp-validation-for="Festival.ImageURL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Festival.StartDate" class="control-label"></label>
+                <input asp-for="Festival.StartDate" class="form-control" />
+                <span asp-validation-for="Festival.StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Festival.EndDate" class="control-label"></label>
+                <input asp-for="Festival.EndDate" class="form-control" />
+                <span asp-validation-for="Festival.EndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Festival.FestivalCategory" class="control-label"></label>
+                <input asp-for="Festival.FestivalCategory" class="form-control" />
+                <span asp-validation-for="Festival.FestivalCategory" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Festival.LocationId" class="control-label"></label>
+                <select asp-for="Festival.LocationId" class="form-control" asp-items="ViewBag.LocationId"></select>
+                <span asp-validation-for="Festival.LocationId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Festival.ProducerId" class="control-label"></label>
+                <select asp-for="Festival.ProducerId" class="form-control" asp-items="ViewBag.ProducerId"></select>
+                <span asp-validation-for="Festival.ProducerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,72 @@
+﻿@page "/"
+@model Proiect_Medii.Pages.Festivals.IndexModel
+
+@{
+    ViewData["Title"] = "List of Festivals";
+}
+
+<h1>Festivals</h1>
+
+<p>
+    <a class="btn btn-outline-primary float-right" asp-page="Create">Create New</a>
+</p>
+<div class="row">
+    @foreach (var item in Model.Festival)
+    {
+        <div class="col-md-4 col-xs-6 border-primary mb-3">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-12">
+                        <div class="card-header text-black bg-secondary">
+                            <p class="card-text">
+                                <h5 class="card-title">
+                                    @item.Name
+
+                                </h5>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <img src="@item.ImageURL" width="100%" alt="@item.Name">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <p class="card-text">@item.Description</p>
+                            <p class="card-text"><b>Cinema: </b>@item.Location.Name</p>
+                            <p class="card-text"><b>Category: </b>@item.FestivalCategory</p>
+                            <p class="card-text"><b>Start Date: </b>@item.StartDate.ToString("dd MMM yy")</p>
+                            <p class="card-text"><b>End Date: </b>@item.EndDate.ToString("dd MMM yy")</p>
+                            <p class="card-text ">
+                                <b>Status: </b>
+                                @if (DateTime.Now >= item.StartDate && DateTime.Now <= item.EndDate)
+                                {
+                                    <span class="badge bg-success text-white">AVAILABLE</span>
+                                }
+                                else if (DateTime.Now > item.EndDate)
+                                {
+                                    <span class="badge bg-danger text-white">EXPIRED</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-primary text-white">UPCOMING</span>
+                                }
+                            </p>
+
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card-footer ">
+                            <p class="card-text">
+                                <a class="btn btn-outline-primary float-right" asp-page="./Details" asp-route-id="@item.Id">
+                                    <i class="bi bi-eye-fill"></i> Show Details
+                                </a>
+                                <a class="btn btn-outline-primary float-right" asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

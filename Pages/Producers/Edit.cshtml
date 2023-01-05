@@ -1,0 +1,45 @@
+﻿@page
+@model Proiect_Medii.Pages.Producers.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Producer</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Producer.Id" />
+            <div class="form-group">
+                <label asp-for="Producer.ProfilePictureURL" class="control-label"></label>
+                <input asp-for="Producer.ProfilePictureURL" class="form-control" />
+                <span asp-validation-for="Producer.ProfilePictureURL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Producer.FullName" class="control-label"></label>
+                <input asp-for="Producer.FullName" class="form-control" />
+                <span asp-validation-for="Producer.FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Producer.Bio" class="control-label"></label>
+                <input asp-for="Producer.Bio" class="form-control" />
+                <span asp-validation-for="Producer.Bio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
