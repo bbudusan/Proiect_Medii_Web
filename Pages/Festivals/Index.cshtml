@@ -6,10 +6,12 @@
 }
 
 <h1>Festivals</h1>
-
-<p>
-    <a class="btn btn-outline-primary float-right" asp-page="Create">Create New</a>
-</p>
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        <a class="btn btn-outline-primary float-right" asp-page="Create">Create New</a>
+    </p>
+}
 <div class="row">
     @foreach (var item in Model.Festival)
     {
@@ -58,11 +60,12 @@
                     <div class="col-md-12">
                         <div class="card-footer ">
                             <p class="card-text">
-                                <a class="btn btn-outline-primary float-right" asp-page="./Details" asp-route-id="@item.Id">
-                                    <i class="bi bi-eye-fill"></i> Show Details
-                                </a>
-                                <a class="btn btn-outline-primary float-right" asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
-                                <a class="btn btn-outline-primary float-right" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                                <a class="btn btn-outline-primary float-right" asp-page="./Details" asp-route-id="@item.Id">Show Details</a>
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <a class="btn btn-outline-primary float-right" asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
+                                    <a class="btn btn-outline-primary float-right" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                                }
                             </p>
                         </div>
                     </div>
