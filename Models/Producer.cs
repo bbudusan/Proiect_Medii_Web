@@ -12,10 +12,9 @@ namespace PROIECT_MEDII.Models
         [Required(ErrorMessage = "Profile Picture is required")]
         public string ProfilePictureURL { get; set; }
 
-        [Display(Name = "Full Name")]
+        [Display(Name = "Producer Full Name")]
         [Required(ErrorMessage = "Full Name is required")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Full Name must be between 3 and 50 chars")]
-        public string FullName { get; set; }
+       public string FullName { get; set; }
 
         [Display(Name = "Biography")]
         [Required(ErrorMessage = "Biography is required")]

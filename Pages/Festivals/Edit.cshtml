@@ -50,14 +50,14 @@
                 <span asp-validation-for="Festival.FestivalCategory" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Festival.Location.Name" class="control-label"></label>
-                <select asp-for="Festival.Location.Name" class="form-control" asp-items="ViewBag.LocationId"></select>
-                <span asp-validation-for="Festival.Location.Name" class="text-danger"></span>
+                <label asp-for="Festival.LocationId" class="control-label"></label>
+                <select asp-for="Festival.LocationId" class="form-control" asp-items="ViewBag.LocationId"></select>
+                <span asp-validation-for="Festival.LocationId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Festival.Producer.FullName" class="control-label"></label>
-                <select asp-for="Festival.Producer.FullName" class="form-control" asp-items="ViewBag.ProducerId"></select>
-                <span asp-validation-for="Festival.Producer.FullName" class="text-danger"></span>
+                <label asp-for="Festival.ProducerId" class="control-label"></label>
+                <select asp-for="Festival.ProducerId" class="form-control" asp-items="ViewBag.ProducerId"></select>
+                <span asp-validation-for="Festival.ProducerId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

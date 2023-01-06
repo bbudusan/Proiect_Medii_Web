@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using PROIECT_MEDII.Models;
 using Proiect_Medii.Data;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace Proiect_Medii.Pages.Festivals
 {
+    [Authorize(Roles = "Admin")]
     public class DeleteModel : PageModel
     {
         private readonly Proiect_Medii.Data.Proiect_MediiContext _context;

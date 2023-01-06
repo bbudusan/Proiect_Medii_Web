@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using PROIECT_MEDII.Models;
 using Proiect_Medii.Data;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace Proiect_Medii.Pages.Festivals
 {
+    [Authorize(Roles = "Admin")]
     public class CreateModel : PageModel
     {
         private readonly Proiect_Medii.Data.Proiect_MediiContext _context;
@@ -21,8 +24,8 @@ namespace Proiect_Medii.Pages.Festivals
 
         public IActionResult OnGet()
         {
-        ViewData["LocationId"] = new SelectList(_context.Set<Location>(), "Id", "Description");
-        ViewData["ProducerId"] = new SelectList(_context.Set<Producer>(), "Id", "Bio");
+        ViewData["LocationId"] = new SelectList(_context.Set<Location>(), "Id", "Name");
+        ViewData["ProducerId"] = new SelectList(_context.Set<Producer>(), "Id", "FullName");
             return Page();
         }
 

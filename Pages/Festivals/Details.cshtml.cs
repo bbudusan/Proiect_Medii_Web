@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using PROIECT_MEDII.Models;
 using Proiect_Medii.Data;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Proiect_Medii.Pages.Festivals
 {
@@ -18,8 +19,9 @@ namespace Proiect_Medii.Pages.Festivals
         {
             _context = context;
         }
+      
 
-      public Festival Festival { get; set; }
+        public Festival Festival { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
