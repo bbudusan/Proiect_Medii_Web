@@ -36,8 +36,8 @@ namespace Proiect_Medii.Pages.Festivals
                 return NotFound();
             }
             Festival = festival;
-           ViewData["LocationId"] = new SelectList(_context.Set<Location>(), "Id", "Description");
-           ViewData["ProducerId"] = new SelectList(_context.Set<Producer>(), "Id", "Bio");
+           ViewData["LocationId"] = new SelectList(_context.Set<Location>(), "Id", "Name");
+           ViewData["ProducerId"] = new SelectList(_context.Set<Producer>(), "Id", "FullName");
             return Page();
         }
 
