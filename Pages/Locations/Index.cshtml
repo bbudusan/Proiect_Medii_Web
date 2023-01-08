@@ -43,7 +43,7 @@
                         <td class="align-middle">
                             @Html.DisplayFor(modelItem => item.Description)
                         </td>
-                        <td class="align-middle">
+                        <td style="white-space:nowrap"  class="align-middle">
                             @if (User.IsInRole("Admin"))
                             {
                                 <a class="btn btn-outline-primary" asp-page="./Edit" asp-route-id="@item.Id">Edit</a>

@@ -126,9 +126,14 @@ namespace Proiect_Medii.Areas.Identity.Pages.Account
            CancellationToken.None);
             var result = await _userManager.CreateAsync(user,
            Input.Password);
+
+
             User.Email = Input.Email;
             _context.User.Add(User);
             await _context.SaveChangesAsync();
+           
+
+
             if (result.Succeeded)
             {
                 _logger.LogInformation("User created a new account with password.");

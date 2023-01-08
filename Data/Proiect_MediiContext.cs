@@ -26,5 +26,10 @@ namespace Proiect_Medii.Data
         public DbSet<PROIECT_MEDII.Models.Producer> Producer { get; set; }
 
         public DbSet<Proiect_Medii.Models.User> User { get; set; }
+
+        internal Task FirstOrDefaultAsync(Func<object, object> value)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using PROIECT_MEDII.Models;
 using Proiect_Medii.Data;
+using System.Security.Claims;
 
 namespace Proiect_Medii.Pages.Festivals
 {
@@ -23,6 +24,7 @@ namespace Proiect_Medii.Pages.Festivals
 
         public async Task OnGetAsync()
         {
+           
             if (_context.Festival != null)
             {
                 Festival = await _context.Festival

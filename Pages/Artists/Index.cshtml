@@ -46,7 +46,7 @@
                             @Html.DisplayFor(modelItem => item.Bio)
                         </td>
 
-                        <td class="align-middle">
+                        <td style="white-space:nowrap" class="align-middle">
                             @if (User.IsInRole("Admin")){
                                 <a class="btn btn-outline-primary" asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
                                 <a> | </a>

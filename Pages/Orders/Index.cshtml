@@ -1,5 +1,9 @@
 ﻿@page
+@using Microsoft.AspNetCore.Identity
+
 @model Proiect_Medii.Pages.Orders.IndexModel
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 
 @{
     ViewData["Title"] = "Order";
@@ -11,35 +15,94 @@
     <a class="btn btn-outline-primary float-right" asp-page="Create">Create New</a>
 </p>
 <div class="row">
-    <div class="col-md-8 offset-md-2">
+    <div class="col-md-16 offset-md-0">
 
         <table class="table">
             <thead>
                 <tr class="text-center">
-                    <th>
-                        @Html.DisplayNameFor(model => model.Order[0].User)
-                    </th>
+                    @if (User.IsInRole("Admin")){
+                        <th>
+                        @Html.DisplayNameFor(model => model.Order[0].User.FullName)
+                        </th>
+                    }
+                    
                     <th>
                         @Html.DisplayNameFor(model => model.Order[0].Festival)
                     </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Order[0].Festival.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Order[0].Festival.StartDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Order[0].Festival.EndDate)
+                    </th>
+                   
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model.Order)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.User.FullName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Festival.Name)
-                        </td>
-                        <td class="align-middle">
-                            <a class="btn btn-outline-primary" asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                            <a class="btn btn-outline-info" asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                            <a class="btn btn-danger text-white" asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-                        </td>
-                    </tr>
+                    @if (User.IsInRole("Admin")){
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.User.FullName)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Festival.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Festival.Description)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Festival.StartDate)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Festival.EndDate)
+                            </td>
+
+
+                            <td style="white-space:nowrap" class="align-middle">
+                                <a class="btn btn-outline-primary" asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                                <a class="btn btn-outline-info" asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                                <a class="btn btn-danger text-white" asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                            </td>
+                        </tr>
+
+                    }
+                    else if (@UserManager.GetUserName(User) == @item.User.Email)
+       
+                    {
+                        <tr>
+                            
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Festival.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Festival.Description)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Festival.StartDate)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Festival.EndDate)
+                            </td>
+
+                         
+                            <td style="white-space:nowrap" class="align-middle">
+                                <a class="btn btn-outline-primary" asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                                <a class="btn btn-outline-info" asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                                <a class="btn btn-danger text-white" asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                    
                 }
             </tbody>
         </table>

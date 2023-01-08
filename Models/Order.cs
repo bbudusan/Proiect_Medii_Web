@@ -7,6 +7,7 @@ namespace Proiect_Medii.Models
     {
         public int ID { get; set; }
         public int? UserID { get; set; }
+   
         public User? User { get; set; }
         public int? FestivalID { get; set; }
         public Festival? Festival { get; set; }

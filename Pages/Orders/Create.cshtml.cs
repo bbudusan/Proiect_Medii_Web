@@ -22,7 +22,9 @@ namespace Proiect_Medii.Pages.Orders
         public IActionResult OnGet()
         {
         ViewData["FestivalID"] = new SelectList(_context.Festival, "Id", "Name");
+           
         ViewData["UserID"] = new SelectList(_context.Set<User>(), "ID", "FullName");
+           
             return Page();
         }
 

@@ -1,5 +1,8 @@
 ﻿@page
+@using Microsoft.AspNetCore.Identity
 @model Proiect_Medii.Pages.Orders.CreateModel
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 
 @{
     ViewData["Title"] = "Create";
@@ -11,12 +14,14 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
+       
         <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
             <div class="form-group">
                 <label asp-for="Order.UserID" class="control-label"></label>
                 <select asp-for="Order.UserID" class ="form-control" asp-items="ViewBag.UserID"></select>
             </div>
+            
             <div class="form-group">
                 <label asp-for="Order.FestivalID" class="control-label"></label>
                 <select asp-for="Order.FestivalID" class ="form-control" asp-items="ViewBag.FestivalID"></select>
